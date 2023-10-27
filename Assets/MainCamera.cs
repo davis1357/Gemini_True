@@ -6,17 +6,21 @@ public class MainCamera : MonoBehaviour
 {
     float startingXPos;
     Player player;
+    Camera mainCamera;
 
     // Start is called before the first frame update
     void Start()
     {
         startingXPos = FindObjectOfType<Player>().transform.position.x;
+        mainCamera= GetComponent<Camera>();
     }
 
     // Update is called once per frame
     void Update()
     {
         player = FindObjectOfType<Player>();
-        transform.position = new Vector3(player.transform.position.x - startingXPos, transform.position.y, -10);
+        float halfWidth = mainCamera.aspect * mainCamera.orthographicSize;
+        float quarterWidth = halfWidth / 2;
+        transform.position = new Vector3(player.transform.position.x + quarterWidth, transform.position.y, -10);
     }
 }

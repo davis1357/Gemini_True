@@ -145,7 +145,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  jumpSpeed: 20
+  jumpSpeed: 18
   isFlipped: 1
   isActive: 1
 --- !u!68 &1134166624
