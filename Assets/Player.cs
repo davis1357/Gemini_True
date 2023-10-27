@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
     BoxCollider2D myCollider;
     bool isTouching = true;
     public bool isActive = true;
+    bool isAlive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +59,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Danger" && isActive)
+        if (collision.gameObject.tag == "Danger" && isActive && isAlive)
         {
             FindObjectOfType<GameSession>().Death(isFlipped);
         }

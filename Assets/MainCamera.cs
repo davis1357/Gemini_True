@@ -18,6 +18,8 @@ public class MainCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(FindObjectsOfType<Player>().Length==0)
+        { FindObjectOfType<GameSession>().RestartLevel(); }
         player = FindObjectOfType<Player>();
         float halfWidth = mainCamera.aspect * mainCamera.orthographicSize;
         float quarterWidth = halfWidth / 2;

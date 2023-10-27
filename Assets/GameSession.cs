@@ -17,15 +17,18 @@ public class GameSession : MonoBehaviour
     void Start()
     {
         pointer = 0;
+        Debug.Log(pointer);
+        Debug.Log(deathTimers.Length);
     }
 
     public void Death(bool isFlipped)
     {
+        pointer = pointer + 1;
         //Debug.Log(isFlipped);
-        
-        if (pointer == deathTimers.Length)
+        Debug.Log(pointer);
+        if (pointer > deathTimers.Length)
         {
-            SceneManager.LoadScene("Level 1");
+            RestartLevel();
         }
 
         else if (isFlipped)
@@ -39,7 +42,12 @@ public class GameSession : MonoBehaviour
             StartCoroutine(TimerActivation(isFlipped));
         }
 
-        pointer += 1;
+        
+    }
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("Level 1");
     }
 
     IEnumerator TimerActivation(bool isFlipped)
@@ -53,6 +61,7 @@ public class GameSession : MonoBehaviour
         }
         else
         {
+
             GameObject newPlayer = Instantiate(player, new Vector3(flipped.transform.position.x,
                 -flipped.transform.position.y, 0), Quaternion.identity);
             normal = newPlayer.GetComponent<Player>();
