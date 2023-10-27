@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 445eac114718c5d47ab968943bd06378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deathTimers: 010000000200000003000000
+  deathTimers: 030000000300000003000000
   normal: {fileID: 0}
   flipped: {fileID: 0}
   player: {fileID: 3575680772783132210, guid: 71883251a6e370e488d089a0a9c7e1c5, type: 3}

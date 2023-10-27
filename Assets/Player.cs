@@ -11,25 +11,32 @@ public class Player : MonoBehaviour
     [SerializeField] bool isFlipped = false;
 
     Rigidbody2D myRigidBody;
-    BoxCollider2D myCollider;
     bool isTouching = true;
     public bool isActive = true;
     bool isAlive = true;
+    bool win = false;
 
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = FindObjectOfType<Camera>();
         myRigidBody = GetComponent<Rigidbody2D>();
-        myCollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        PlayerMoves();
+        if (win == false)
+        {
+            PlayerMoves();
 
-        PlayerJumping();
+            PlayerJumping();
+        }
+
+        if(win==true && Input.GetKeyDown(KeyCode.Space))
+        {
+            FindObjectOfType<GameSession>().RestartLevel();
+        }
     }
 
     private void PlayerMoves()
@@ -66,5 +73,14 @@ public class Player : MonoBehaviour
 
         if (collision.gameObject.tag == "Floor")
             isTouching = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Win")
+        {
+            FindObjectOfType<WinMushroom>().WinScreen();
+            win = true;
+        }
     }
 }

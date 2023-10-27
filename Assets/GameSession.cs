@@ -17,15 +17,11 @@ public class GameSession : MonoBehaviour
     void Start()
     {
         pointer = 0;
-        Debug.Log(pointer);
-        Debug.Log(deathTimers.Length);
     }
 
     public void Death(bool isFlipped)
     {
         pointer = pointer + 1;
-        //Debug.Log(isFlipped);
-        Debug.Log(pointer);
         if (pointer > deathTimers.Length)
         {
             RestartLevel();
