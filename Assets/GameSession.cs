@@ -22,7 +22,7 @@ public class GameSession : MonoBehaviour
     public void Death(bool isFlipped)
     {
         //Debug.Log(isFlipped);
-        pointer += 1;
+        
         if (pointer == deathTimers.Length)
         {
             SceneManager.LoadScene("Level 1");
@@ -48,6 +48,8 @@ public class GameSession : MonoBehaviour
             //normal.GetComponent<BoxCollider2D>().isTrigger = true;
             StartCoroutine(TimerActivation(isFlipped));
         }
+
+        pointer += 1;
     }
 
     IEnumerator TimerActivation(bool isFlipped)
