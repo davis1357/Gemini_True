@@ -14,7 +14,6 @@ public class Player : MonoBehaviour
     BoxCollider2D myCollider;
     bool isTouching = true;
     public bool isActive = true;
-    //float startingXPos;
 
     // Start is called before the first frame update
     void Start()
@@ -22,14 +21,11 @@ public class Player : MonoBehaviour
         mainCamera = FindObjectOfType<Camera>();
         myRigidBody = GetComponent<Rigidbody2D>();
         myCollider = GetComponent<BoxCollider2D>();
-        //startingXPos = transform.position.x;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //mainCamera.transform.position = new Vector3(this.transform.position.x - startingXPos, mainCamera.transform.position.y, -10);
-
         PlayerMoves();
 
         PlayerJumping();
@@ -37,9 +33,7 @@ public class Player : MonoBehaviour
 
     private void PlayerMoves()
     {
-        //myRigidBody.velocity = new Vector2(playerSpeed, 0);
         transform.Translate(Vector2.right * playerSpeed * Time.deltaTime);
-        //this.transform.position += this.transform.right * Time.deltaTime * playerSpeed;
     }
 
     private void PlayerJumping()
@@ -53,8 +47,6 @@ public class Player : MonoBehaviour
                 myRigidBody.AddRelativeForce(Vector2.up * jumpSpeed, ForceMode2D.Impulse);
             else
                 myRigidBody.AddRelativeForce(Vector2.down * jumpSpeed, ForceMode2D.Impulse);
-            //myRigidBody.AddRelativeForce(0,jumpSpeed,0);
-            //myRigidBody.velocity = new Vector2(playerSpeed, jumpSpeed);
         }
     }
 
